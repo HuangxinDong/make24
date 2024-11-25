@@ -1,9 +1,11 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://84ddmgvynvn4"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://84ddmgvynvn4"]
 
 [ext_resource type="FontFile" uid="uid://cw7yecabrwc2d" path="res://assets/fonts/chicago-12.ttf" id="1_w3o0j"]
-[ext_resource type="StyleBox" uid="uid://dmiggs01yg4k5" path="res://theme/normal_button_box_texture.tres" id="2_4d80f"]
-[ext_resource type="StyleBox" uid="uid://n61a28dep86w" path="res://theme/pressed_button_box_texture.tres" id="3_d3vee"]
-[ext_resource type="StyleBox" uid="uid://ka34frcvqjq8" path="res://theme/focus_button_box_texture.tres" id="4_yer4n"]
+[ext_resource type="StyleBox" uid="uid://ka34frcvqjq8" path="res://theme/buttons/focus_button_box_texture.tres" id="2_xamxb"]
+[ext_resource type="StyleBox" uid="uid://n61a28dep86w" path="res://theme/buttons/pressed_button_box_texture.tres" id="3_nkhqj"]
+[ext_resource type="StyleBox" uid="uid://dmiggs01yg4k5" path="res://theme/buttons/normal_button_box_texture.tres" id="4_txkq1"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_i220c"]
 
 [resource]
 default_font = ExtResource("1_w3o0j")
@@ -15,11 +17,12 @@ Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 48
 Button/fonts/font = ExtResource("1_w3o0j")
-Button/styles/focus = ExtResource("4_yer4n")
-Button/styles/hover = ExtResource("4_yer4n")
-Button/styles/hover_pressed = ExtResource("3_d3vee")
-Button/styles/normal = ExtResource("2_4d80f")
-Button/styles/pressed = ExtResource("3_d3vee")
+Button/icons/icon = SubResource("CanvasTexture_i220c")
+Button/styles/focus = ExtResource("2_xamxb")
+Button/styles/hover = ExtResource("2_xamxb")
+Button/styles/hover_pressed = ExtResource("3_nkhqj")
+Button/styles/normal = ExtResource("4_txkq1")
+Button/styles/pressed = ExtResource("3_nkhqj")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 30
 Label/fonts/font = ExtResource("1_w3o0j")
