@@ -1,10 +1,16 @@
-extends CanvasLayer
+extends Control
 
 @onready var main = $"../"
 
-# Resume the game
-func _on_ResumeButton_pressed():
-	main.pauseMenu()
+
+func get_main_node():
+	return get_tree().root.get_child(0)
+	
+# Press Resume Button
+func _on_resume_button_pressed() -> void:
+	var main = get_main_node()
+	if main:
+		main.pauseMenu()
 
 # Press Options Button
 func _on_options_button_pressed() -> void:
