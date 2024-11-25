@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddmr858h4dawm"]
+[gd_scene load_steps=3 format=3 uid="uid://ddmr858h4dawm"]
 
 [ext_resource type="Texture2D" uid="uid://bkmvlxrirpc1x" path="res://assets/screen/Background.png" id="1_fa5oy"]
+[ext_resource type="Texture2D" uid="uid://wctitagthdld" path="res://assets/UI/Make24 Icon.png" id="2_syu86"]
 
 [node name="Desktop" type="Node2D"]
 
@@ -15,3 +16,13 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("1_fa5oy")
 stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 1400.0
+offset_top = 179.0
+offset_right = 1528.0
+offset_bottom = 375.0
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_syu86")
