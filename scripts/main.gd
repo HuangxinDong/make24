@@ -1,33 +1,27 @@
 extends Node
 
-@export var desktop_scene: PackedScene
-@onready var desktop_instance: Node2D = null
+@onready var desktop = $Desktop
 @onready var pause_menu = $PauseMenu
-var paused = false
-
 
 func _ready():
-	load_desktop()
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	desktop.visible = true
+	pause_menu.hide()
 
-
-func _process(delta: float):
-	if Input.is_action_just_pressed("pause"):
+func _input(event):
+	if event.is_action_pressed("pause"):
 		pauseMenu()
+		
+func _process(delta: float):
+	pass
 
-
-# Load desktop.tscn as instance
-func load_desktop():
-	if desktop_instance == null:
-		desktop_instance = desktop_scene.instantiate()
-		add_child(desktop_instance)
 
 # Enable pause menu
 func pauseMenu():
-	if paused:
+	if get_tree().paused:
 		pause_menu.hide()
 		Engine.time_scale = 1
 	else:
 		pause_menu.show()
 		Engine.time_scale = 0
-		
-	paused = !paused
+	get_tree().paused = !get_tree().paused

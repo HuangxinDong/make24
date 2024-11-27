@@ -6,6 +6,8 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_stgle")
-desktop_scene = ExtResource("4_xtaa7")
+
+[node name="Desktop" parent="." instance=ExtResource("4_xtaa7")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_tjpo1")]
+visible = false

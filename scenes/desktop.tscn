@@ -1,28 +1,64 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddmr858h4dawm"]
+[gd_scene load_steps=6 format=3 uid="uid://ddmr858h4dawm"]
 
 [ext_resource type="Texture2D" uid="uid://bkmvlxrirpc1x" path="res://assets/screen/Background.png" id="1_fa5oy"]
+[ext_resource type="Script" path="res://scripts/desktop.gd" id="1_lcxy5"]
+[ext_resource type="PackedScene" uid="uid://dbkpdkeeo00uc" path="res://scenes/make_24.tscn" id="2_72oqr"]
 [ext_resource type="Texture2D" uid="uid://wctitagthdld" path="res://assets/UI/Make24 Icon.png" id="2_syu86"]
+[ext_resource type="Texture2D" uid="uid://4ntanyddktot" path="res://assets/UI/Make24 Icon focus.png" id="3_cm6tx"]
 
-[node name="Desktop" type="Node2D"]
-
-[node name="Background" type="TextureRect" parent="."]
+[node name="Desktop" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1600.0
-offset_bottom = 1200.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_lcxy5")
+make24 = ExtResource("2_72oqr")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_fa5oy")
-stretch_mode = 5
+
+[node name="WindowContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -800.0
+offset_top = -600.0
+offset_right = 800.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 1400.0
-offset_top = 179.0
-offset_right = 1528.0
-offset_bottom = 375.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.655
+anchor_top = 0.184
+anchor_right = 0.655
+anchor_bottom = 0.184
+offset_left = 352.0
+offset_top = -20.8
+offset_right = 480.0
+offset_bottom = 107.2
+grow_horizontal = 0
+mouse_filter = 0
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+[node name="Math24Button" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_syu86")
+texture_pressed = ExtResource("3_cm6tx")
+texture_focused = ExtResource("3_cm6tx")
+
+[connection signal="pressed" from="VBoxContainer/Math24Button" to="." method="_on_math_24_button_pressed"]

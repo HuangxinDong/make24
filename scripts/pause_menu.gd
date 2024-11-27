@@ -1,7 +1,8 @@
 extends Control
 
-@onready var main = $"../"
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func get_main_node():
 	return get_tree().root.get_child(0)
