@@ -1,14 +1,31 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://84ddmgvynvn4"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://84ddmgvynvn4"]
 
 [ext_resource type="FontFile" uid="uid://cw7yecabrwc2d" path="res://assets/fonts/chicago-12.ttf" id="1_w3o0j"]
 [ext_resource type="StyleBox" uid="uid://ka34frcvqjq8" path="res://theme/buttons/focus_button_box_texture.tres" id="2_xamxb"]
 [ext_resource type="StyleBox" uid="uid://n61a28dep86w" path="res://theme/buttons/pressed_button_box_texture.tres" id="3_nkhqj"]
 [ext_resource type="StyleBox" uid="uid://dmiggs01yg4k5" path="res://theme/buttons/normal_button_box_texture.tres" id="4_txkq1"]
+[ext_resource type="Texture2D" uid="uid://dsvag7rwg6wjj" path="res://assets/UI/Windows2.png" id="5_lnf6s"]
+[ext_resource type="Texture2D" uid="uid://v1yndgqdjvqn" path="res://assets/UI/closebutton1.png" id="5_myt8h"]
+[ext_resource type="Texture2D" uid="uid://didp57oeuptv7" path="res://assets/UI/closebutton2.png" id="6_ai8xg"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_i220c"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kaayu"]
+resource_local_to_scene = true
+texture = ExtResource("5_lnf6s")
+texture_margin_left = 30.0
+texture_margin_top = 47.0
+texture_margin_right = 29.55
+texture_margin_bottom = 26.8
+expand_margin_left = 10.0
+expand_margin_top = 40.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+region_rect = Rect2(12, 42, 688, 362)
+
 [resource]
 default_font = ExtResource("1_w3o0j")
+default_font_size = 48
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_disabled_color = Color(0.63, 0.63, 0.63, 1)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)
@@ -26,3 +43,10 @@ Button/styles/pressed = ExtResource("3_nkhqj")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 30
 Label/fonts/font = ExtResource("1_w3o0j")
+Window/colors/title_color = Color(0, 0, 0, 1)
+Window/constants/close_h_offset = 1182
+Window/constants/close_v_offset = 34
+Window/fonts/title_font = ExtResource("1_w3o0j")
+Window/icons/close = ExtResource("5_myt8h")
+Window/icons/close_pressed = ExtResource("6_ai8xg")
+Window/styles/embedded_border = SubResource("StyleBoxTexture_kaayu")
