@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6eysqvuw5k70"
-path="res://.godot/imported/Diamonds-88x124.png-8fc525ed6336b9f48ac5decef45fd14b.ctex"
+uid="uid://cbg86lnwqjv15"
+path="res://.godot/imported/eyes.jpg-7f62c8af3ca127dd559c353a6676c72d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Diamonds-88x124.png"
-dest_files=["res://.godot/imported/Diamonds-88x124.png-8fc525ed6336b9f48ac5decef45fd14b.ctex"]
+source_file="res://assets/screen/eyes.jpg"
+dest_files=["res://.godot/imported/eyes.jpg-7f62c8af3ca127dd559c353a6676c72d.ctex"]
 
 [params]
 

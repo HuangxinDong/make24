@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1qiumqyelklq"
-path="res://.godot/imported/Clubs-88x124.png-07fd7d7a2f282d0752548c014cf76327.ctex"
+uid="uid://7i2aag44juw5"
+path="res://.godot/imported/toolbar.png-17d6ba66ac19c82eef7e57e96e69b069.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Clubs-88x124.png"
-dest_files=["res://.godot/imported/Clubs-88x124.png-07fd7d7a2f282d0752548c014cf76327.ctex"]
+source_file="res://assets/UI/toolbar.png"
+dest_files=["res://.godot/imported/toolbar.png-17d6ba66ac19c82eef7e57e96e69b069.ctex"]
 
 [params]
 

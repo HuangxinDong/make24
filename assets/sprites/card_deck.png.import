@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmtey0on6u5bu"
-path="res://.godot/imported/Hearts-88x124.png-af6e330c0d6357f912701566253e3c3c.ctex"
+uid="uid://quaruuwsjyer"
+path="res://.godot/imported/card_deck.png-8be5385676b8437ac9fc795ca3a97fd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Hearts-88x124.png"
-dest_files=["res://.godot/imported/Hearts-88x124.png-af6e330c0d6357f912701566253e3c3c.ctex"]
+source_file="res://assets/sprites/card_deck.png"
+dest_files=["res://.godot/imported/card_deck.png-8be5385676b8437ac9fc795ca3a97fd5.ctex"]
 
 [params]
 
