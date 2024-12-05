@@ -1,0 +1,103 @@
+[gd_scene load_steps=8 format=3 uid="uid://dbkpdkeeo00uc"]
+
+[ext_resource type="Texture2D" uid="uid://quaruuwsjyer" path="res://assets/sprites/card_deck.png" id="3_ytf47"]
+[ext_resource type="Texture2D" uid="uid://cmaumfp3t6epb" path="res://assets/sprites/card_back.png" id="4_bfjue"]
+[ext_resource type="PackedScene" uid="uid://pv8fl8xtsev3" path="res://scenes/custom_window.tscn" id="5_kioku"]
+[ext_resource type="Texture2D" uid="uid://cm722h7piodfq" path="res://assets/sprites/cards/Clubs-1.png" id="5_q8kbo"]
+
+[sub_resource type="Animation" id="Animation_v34w7"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_r1o8p"]
+resource_name = "pop"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CustomWindow/card:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(112, -0.25, 0, 0.25, 0, 700, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CustomWindow/card:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(160, -0.25, 0, 0.25, 0, 200, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CustomWindow/card:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_bfjue"), ExtResource("5_q8kbo")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5imfd"]
+_data = {
+"RESET": SubResource("Animation_v34w7"),
+"pop": SubResource("Animation_r1o8p")
+}
+
+[node name="make24" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5imfd")
+}
+
+[node name="CustomWindow" parent="." instance=ExtResource("5_kioku")]
+position = Vector2(200, 200)
+window_name = "Make 24"
+
+[node name="Control2" type="Control" parent="CustomWindow"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 43.0
+offset_right = 1200.0
+offset_bottom = 800.0
+
+[node name="Button" type="Button" parent="CustomWindow/Control2"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -68.5
+offset_top = -80.0
+offset_right = 68.5
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Play"
+
+[node name="Score" type="Label" parent="CustomWindow"]
+offset_left = 66.0
+offset_top = 407.0
+offset_right = 141.0
+offset_bottom = 434.0
+text = "Score:"
+
+[node name="card" type="Sprite2D" parent="CustomWindow"]
+z_index = 2
+position = Vector2(645, 183)
+texture = ExtResource("4_bfjue")
+
+[node name="card_deck" type="Sprite2D" parent="CustomWindow"]
+visibility_layer = 3
+position = Vector2(207, 194)
+texture = ExtResource("3_ytf47")

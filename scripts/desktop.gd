@@ -1,10 +1,11 @@
 extends Control
 
-@onready var window_container = $WindowContainer
+
 @export var make24: PackedScene
+var make24_instance: Node2D = null
 
 func _on_math_24_button_pressed() -> void:
 	if not make24:
 		return
 	var make24_instance = make24.instantiate()
-	window_container.add_child(make24_instance)
+	add_child(make24_instance)
