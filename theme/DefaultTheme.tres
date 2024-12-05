@@ -4,24 +4,12 @@
 [ext_resource type="StyleBox" uid="uid://ka34frcvqjq8" path="res://theme/buttons/focus_button_box_texture.tres" id="2_xamxb"]
 [ext_resource type="StyleBox" uid="uid://n61a28dep86w" path="res://theme/buttons/pressed_button_box_texture.tres" id="3_nkhqj"]
 [ext_resource type="StyleBox" uid="uid://dmiggs01yg4k5" path="res://theme/buttons/normal_button_box_texture.tres" id="4_txkq1"]
-[ext_resource type="Texture2D" uid="uid://dsvag7rwg6wjj" path="res://assets/UI/Windows2.png" id="5_lnf6s"]
 [ext_resource type="Texture2D" uid="uid://v1yndgqdjvqn" path="res://assets/UI/closebutton1.png" id="5_myt8h"]
 [ext_resource type="Texture2D" uid="uid://didp57oeuptv7" path="res://assets/UI/closebutton2.png" id="6_ai8xg"]
+[ext_resource type="StyleBox" uid="uid://ogmx6d7ru4hh" path="res://theme/windows/window_focus.tres" id="7_ntifc"]
+[ext_resource type="StyleBox" uid="uid://b0sw1x8y0u7ry" path="res://theme/windows/window_unfocus.tres" id="8_tlut5"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_i220c"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kaayu"]
-resource_local_to_scene = true
-texture = ExtResource("5_lnf6s")
-texture_margin_left = 30.0
-texture_margin_top = 47.0
-texture_margin_right = 29.55
-texture_margin_bottom = 26.8
-expand_margin_left = 10.0
-expand_margin_top = 40.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
-region_rect = Rect2(12, 42, 688, 362)
 
 [resource]
 default_font = ExtResource("1_w3o0j")
@@ -49,4 +37,5 @@ Window/constants/close_v_offset = 34
 Window/fonts/title_font = ExtResource("1_w3o0j")
 Window/icons/close = ExtResource("5_myt8h")
 Window/icons/close_pressed = ExtResource("6_ai8xg")
-Window/styles/embedded_border = SubResource("StyleBoxTexture_kaayu")
+Window/styles/embedded_border = ExtResource("7_ntifc")
+Window/styles/embedded_unfocused_border = ExtResource("8_tlut5")
