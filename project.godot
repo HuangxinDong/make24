@@ -13,13 +13,24 @@ config_version=5
 config/name="Old Computer Project"
 run/main_scene="res://scenes/start_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"
+config/macos_native_icon="res://Make24_Icon.icns"
+
+[audio]
+
+buses/default_bus_layout=""
+
+[autoload]
+
+Database="*res://scripts/database.gd"
 
 [display]
 
 window/size/viewport_width=1600
 window/size/viewport_height=1200
-mouse_cursor/custom_image="res://assets/UI/pixel_cursor.png"
+window/stretch/mode="viewport"
+mouse_cursor/custom_image="res://assets/sprites/UI/pixel_cursor.png"
 
 [gui]
 
@@ -38,3 +49,8 @@ pause={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+textures/default_filters/use_nearest_mipmap_filter=true
+textures/decals/filter=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+2d/snap/snap_2d_transforms_to_pixel=true
