@@ -1,6 +1,6 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://ogmx6d7ru4hh"]
 
-[ext_resource type="Texture2D" uid="uid://dsvag7rwg6wjj" path="res://assets/UI/Windows2.png" id="1_51aow"]
+[ext_resource type="Texture2D" uid="uid://dsvag7rwg6wjj" path="res://assets/sprites/UI/Windows2.png" id="1_51aow"]
 
 [resource]
 resource_local_to_scene = true

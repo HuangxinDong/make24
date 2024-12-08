@@ -1,11 +1,15 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://84ddmgvynvn4"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://84ddmgvynvn4"]
 
 [ext_resource type="FontFile" uid="uid://cw7yecabrwc2d" path="res://assets/fonts/chicago-12.ttf" id="1_w3o0j"]
 [ext_resource type="StyleBox" uid="uid://ka34frcvqjq8" path="res://theme/buttons/focus_button_box_texture.tres" id="2_xamxb"]
 [ext_resource type="StyleBox" uid="uid://n61a28dep86w" path="res://theme/buttons/pressed_button_box_texture.tres" id="3_nkhqj"]
 [ext_resource type="StyleBox" uid="uid://dmiggs01yg4k5" path="res://theme/buttons/normal_button_box_texture.tres" id="4_txkq1"]
-[ext_resource type="Texture2D" uid="uid://v1yndgqdjvqn" path="res://assets/UI/closebutton1.png" id="5_myt8h"]
-[ext_resource type="Texture2D" uid="uid://didp57oeuptv7" path="res://assets/UI/closebutton2.png" id="6_ai8xg"]
+[ext_resource type="Texture2D" uid="uid://v1yndgqdjvqn" path="res://assets/sprites/UI/closebutton1.png" id="5_myt8h"]
+[ext_resource type="Texture2D" uid="uid://ctnlb0yj1mxrb" path="res://assets/sprites/UI/round_checked.png" id="5_ulvpi"]
+[ext_resource type="Texture2D" uid="uid://2wh5jwn2ttd1" path="res://assets/sprites/UI/round_unchecked.png" id="6_0isfy"]
+[ext_resource type="Texture2D" uid="uid://didp57oeuptv7" path="res://assets/sprites/UI/closebutton2.png" id="6_ai8xg"]
+[ext_resource type="StyleBox" uid="uid://broqnukk01qcc" path="res://theme/blank_texture.tres" id="7_3wl2l"]
+[ext_resource type="Texture2D" uid="uid://hledyo1y5u7i" path="res://assets/sprites/UI/round.png" id="7_k8ybi"]
 [ext_resource type="StyleBox" uid="uid://ogmx6d7ru4hh" path="res://theme/windows/window_focus.tres" id="7_ntifc"]
 [ext_resource type="StyleBox" uid="uid://b0sw1x8y0u7ry" path="res://theme/windows/window_unfocus.tres" id="8_tlut5"]
 
@@ -23,13 +27,23 @@ Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 48
 Button/fonts/font = ExtResource("1_w3o0j")
 Button/icons/icon = SubResource("CanvasTexture_i220c")
+Button/styles/disabled = ExtResource("4_txkq1")
 Button/styles/focus = ExtResource("2_xamxb")
 Button/styles/hover = ExtResource("2_xamxb")
 Button/styles/hover_pressed = ExtResource("3_nkhqj")
 Button/styles/normal = ExtResource("4_txkq1")
 Button/styles/pressed = ExtResource("3_nkhqj")
+CheckBox/icons/checked = ExtResource("5_ulvpi")
+CheckBox/icons/unchecked = ExtResource("6_0isfy")
+CheckBox/icons/unchecked_disabled = ExtResource("7_k8ybi")
+CheckBox/styles/disabled = ExtResource("7_3wl2l")
+CheckBox/styles/focus = ExtResource("7_3wl2l")
+CheckBox/styles/hover = ExtResource("7_3wl2l")
+CheckBox/styles/hover_pressed = ExtResource("7_3wl2l")
+CheckBox/styles/normal = ExtResource("7_3wl2l")
+CheckBox/styles/pressed = ExtResource("7_3wl2l")
 Label/colors/font_color = Color(0, 0, 0, 1)
-Label/font_sizes/font_size = 30
+Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_w3o0j")
 Window/colors/title_color = Color(0, 0, 0, 1)
 Window/constants/close_h_offset = 1182
