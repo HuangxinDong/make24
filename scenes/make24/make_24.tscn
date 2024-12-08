@@ -1,103 +1,408 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbkpdkeeo00uc"]
+[gd_scene load_steps=29 format=3 uid="uid://dbkpdkeeo00uc"]
 
-[ext_resource type="Texture2D" uid="uid://quaruuwsjyer" path="res://assets/sprites/card_deck.png" id="3_ytf47"]
-[ext_resource type="Texture2D" uid="uid://cmaumfp3t6epb" path="res://assets/sprites/card_back.png" id="4_bfjue"]
+[ext_resource type="Script" path="res://scripts/make_24.gd" id="1_qapsf"]
+[ext_resource type="AudioStream" uid="uid://8jde8ymkgivm" path="res://assets/sounds/deal4cards.wav" id="3_s03ji"]
+[ext_resource type="Texture2D" uid="uid://quaruuwsjyer" path="res://assets/sprites/cards/card_deck.png" id="3_ytf47"]
+[ext_resource type="Texture2D" uid="uid://d06nokpweiyn7" path="res://assets/sprites/UI/plus.png" id="4_613us"]
+[ext_resource type="PackedScene" uid="uid://dtpu43c01b1vx" path="res://scenes/make24/card.tscn" id="5_12fvi"]
+[ext_resource type="Texture2D" uid="uid://bsac5o55e4pee" path="res://assets/sprites/UI/plus_pressed.png" id="5_gxrb1"]
 [ext_resource type="PackedScene" uid="uid://pv8fl8xtsev3" path="res://scenes/custom_window.tscn" id="5_kioku"]
-[ext_resource type="Texture2D" uid="uid://cm722h7piodfq" path="res://assets/sprites/cards/Clubs-1.png" id="5_q8kbo"]
+[ext_resource type="Texture2D" uid="uid://cxiqjgndj6gkj" path="res://assets/sprites/UI/minus.png" id="6_pkf5v"]
+[ext_resource type="Texture2D" uid="uid://bu3aksbbrv2fj" path="res://assets/sprites/UI/minus_pressed.png" id="7_f5efb"]
+[ext_resource type="Texture2D" uid="uid://by23vln50cq0x" path="res://assets/sprites/UI/multiply.png" id="8_bhsif"]
+[ext_resource type="Texture2D" uid="uid://n8df8xvnwu61" path="res://assets/sprites/UI/mutiply_pressed.png" id="9_ll8un"]
+[ext_resource type="Texture2D" uid="uid://bt05lsejbwcg3" path="res://assets/sprites/UI/divide.png" id="10_oup84"]
+[ext_resource type="Texture2D" uid="uid://cayi824v8rfth" path="res://assets/sprites/UI/divide_pressed.png" id="11_6mrks"]
+[ext_resource type="Texture2D" uid="uid://cyn4vowwxac8q" path="res://assets/sprites/UI/timers.png" id="13_cmv8y"]
+[ext_resource type="Texture2D" uid="uid://c6wo52drvvnib" path="res://assets/sprites/cards/card_blank_face.png" id="13_emmsu"]
 
-[sub_resource type="Animation" id="Animation_v34w7"]
+[sub_resource type="Animation" id="Animation_f8xye"]
 length = 0.001
 
-[sub_resource type="Animation" id="Animation_r1o8p"]
-resource_name = "pop"
+[sub_resource type="Animation" id="Animation_v34w7"]
+resource_name = "deal_cards"
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CustomWindow/card:position:x")
+tracks/0/path = NodePath("CustomWindow/CardContainer/Card1:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(112, -0.25, 0, 0.25, 0, 700, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
+"points": PackedFloat32Array(295, -0.25, 0, 0.25, 0, 623, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.4, 1)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CustomWindow/card:position:y")
+tracks/1/path = NodePath("CustomWindow/CardContainer/Card1:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(160, -0.25, 0, 0.25, 0, 200, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
+"points": PackedFloat32Array(178, -0.25, 0, 0.25, 0, 255, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.4, 1)
 }
-tracks/2/type = "value"
+tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CustomWindow/card:texture")
+tracks/2/path = NodePath("CustomWindow/CardContainer/Card2:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("4_bfjue"), ExtResource("5_q8kbo")]
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(295, -0.25, 0, 0.25, 0, 867, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.3, 0.966667)
 }
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CustomWindow/CardContainer/Card2:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(178, -0.25, 0, 0.25, 0, 255, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.3, 0.966667)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CustomWindow/CardContainer/Card3:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(295, -0.25, 0, 0.25, 0, 624, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.166667, 0.833333)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CustomWindow/CardContainer/Card3:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(178, -0.25, 0, 0.25, 0, 575, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.166667, 0.833333)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CustomWindow/CardContainer/Card4:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(295, -0.25, 0, 0.25, 0, 870, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.733333)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CustomWindow/CardContainer/Card4:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(178, -0.25, 0, 0.25, 0, 575, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.733333)
+}
+
+[sub_resource type="Animation" id="Animation_r1o8p"]
+resource_name = "pop"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5imfd"]
 _data = {
-"RESET": SubResource("Animation_v34w7"),
+"RESET": SubResource("Animation_f8xye"),
+"deal_cards": SubResource("Animation_v34w7"),
 "pop": SubResource("Animation_r1o8p")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilmme"]
+atlas = ExtResource("13_cmv8y")
+region = Rect2(0, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_behfh"]
+atlas = ExtResource("13_cmv8y")
+region = Rect2(0, 96, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_els7l"]
+atlas = ExtResource("13_cmv8y")
+region = Rect2(0, 192, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kgx7"]
+atlas = ExtResource("13_cmv8y")
+region = Rect2(0, 288, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb2ng"]
+atlas = ExtResource("13_cmv8y")
+region = Rect2(0, 384, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iajvi"]
+atlas = ExtResource("13_cmv8y")
+region = Rect2(0, 480, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l42am"]
+atlas = ExtResource("13_cmv8y")
+region = Rect2(0, 576, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggnai"]
+atlas = ExtResource("13_cmv8y")
+region = Rect2(0, 672, 64, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ujusj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilmme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_behfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_els7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kgx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb2ng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iajvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l42am")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggnai")
+}],
+"loop": true,
+"name": &"hands_move",
+"speed": 1.0
+}]
+
 [node name="make24" type="Node2D"]
+script = ExtResource("1_qapsf")
+card_scene = ExtResource("5_12fvi")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 120.0
+one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_5imfd")
 }
 
+[node name="DealCardSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_s03ji")
+volume_db = -10.0
+
 [node name="CustomWindow" parent="." instance=ExtResource("5_kioku")]
 position = Vector2(200, 200)
 window_name = "Make 24"
 
-[node name="Control2" type="Control" parent="CustomWindow"]
+[node name="Control" type="Control" parent="CustomWindow"]
 layout_mode = 3
 anchors_preset = 0
 offset_top = 43.0
 offset_right = 1200.0
 offset_bottom = 800.0
+mouse_filter = 2
 
-[node name="Button" type="Button" parent="CustomWindow/Control2"]
+[node name="Operators" type="VBoxContainer" parent="CustomWindow/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -228.5
+offset_right = -54.0
+offset_bottom = 263.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 36
+
+[node name="Plus" type="TextureButton" parent="CustomWindow/Control/Operators"]
+layout_mode = 2
+texture_normal = ExtResource("4_613us")
+texture_pressed = ExtResource("5_gxrb1")
+
+[node name="Minus" type="TextureButton" parent="CustomWindow/Control/Operators"]
+layout_mode = 2
+texture_normal = ExtResource("6_pkf5v")
+texture_pressed = ExtResource("7_f5efb")
+
+[node name="Multiply" type="TextureButton" parent="CustomWindow/Control/Operators"]
+layout_mode = 2
+texture_normal = ExtResource("8_bhsif")
+texture_pressed = ExtResource("9_ll8un")
+
+[node name="Divide" type="TextureButton" parent="CustomWindow/Control/Operators"]
+layout_mode = 2
+texture_normal = ExtResource("10_oup84")
+texture_pressed = ExtResource("11_6mrks")
+
+[node name="PlayButton" type="Button" parent="CustomWindow/Control"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -68.5
-offset_top = -80.0
-offset_right = 68.5
-offset_bottom = -38.0
-grow_horizontal = 2
+offset_left = 50.0
+offset_top = -108.0
+offset_right = 187.0
+offset_bottom = -66.0
 grow_vertical = 0
 text = "Play"
 
+[node name="RedrawButton" type="Button" parent="CustomWindow/Control"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 41.0
+offset_top = -108.0
+offset_right = 196.0
+offset_bottom = -66.0
+grow_vertical = 0
+text = "Redraw"
+
+[node name="UndoButton" type="Button" parent="CustomWindow/Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 255.0
+offset_top = -108.0
+offset_right = 392.0
+offset_bottom = -66.0
+grow_vertical = 0
+disabled = true
+text = "Undo"
+
+[node name="LimitedTimeLabel" type="Label" parent="CustomWindow/Control"]
+layout_mode = 1
+offset_left = 864.0
+offset_top = 15.0
+offset_right = 1118.0
+offset_bottom = 43.0
+text = "Limited Time Mode:"
+
+[node name="LimitedTimeCheckBox" type="CheckBox" parent="CustomWindow/Control"]
+layout_mode = 0
+offset_left = 1015.0
+offset_top = 67.0
+offset_right = 1058.0
+offset_bottom = 105.0
+disabled = true
+flat = true
+
+[node name="Watch" type="AnimatedSprite2D" parent="CustomWindow"]
+position = Vector2(1105, 146)
+sprite_frames = SubResource("SpriteFrames_ujusj")
+animation = &"hands_move"
+frame_progress = 0.328277
+
+[node name="Countdown" type="Label" parent="CustomWindow"]
+visible = false
+offset_left = 69.0
+offset_top = 399.0
+offset_right = 217.0
+offset_bottom = 427.0
+
 [node name="Score" type="Label" parent="CustomWindow"]
-offset_left = 66.0
-offset_top = 407.0
-offset_right = 141.0
-offset_bottom = 434.0
-text = "Score:"
+offset_left = 70.0
+offset_top = 442.0
+offset_right = 172.0
+offset_bottom = 470.0
+text = "Score: 0"
 
-[node name="card" type="Sprite2D" parent="CustomWindow"]
-z_index = 2
-position = Vector2(645, 183)
-texture = ExtResource("4_bfjue")
+[node name="Operation" type="Label" parent="CustomWindow"]
+offset_left = 70.0
+offset_top = 484.0
+offset_right = 358.0
+offset_bottom = 595.0
+text = "Operation:
+"
+autowrap_mode = 3
 
-[node name="card_deck" type="Sprite2D" parent="CustomWindow"]
+[node name="CardDeck" type="Sprite2D" parent="CustomWindow"]
 visibility_layer = 3
 position = Vector2(207, 194)
 texture = ExtResource("3_ytf47")
+
+[node name="UpcomingCard" parent="CustomWindow" instance=ExtResource("5_12fvi")]
+position = Vector2(295, 178)
+is_interactive = false
+
+[node name="CardContainer" type="Node2D" parent="CustomWindow"]
+
+[node name="Card1" parent="CustomWindow/CardContainer" instance=ExtResource("5_12fvi")]
+position = Vector2(623, 255)
+suit = 1
+number = 13
+
+[node name="Card2" parent="CustomWindow/CardContainer" instance=ExtResource("5_12fvi")]
+position = Vector2(867, 255)
+
+[node name="Card3" parent="CustomWindow/CardContainer" instance=ExtResource("5_12fvi")]
+position = Vector2(624, 575)
+suit = 2
+number = 6
+
+[node name="Card4" parent="CustomWindow/CardContainer" instance=ExtResource("5_12fvi")]
+position = Vector2(870, 575)
+suit = 3
+number = 4
+
+[node name="BlankCard" type="Sprite2D" parent="CustomWindow"]
+position = Vector2(295, 178)
+texture = ExtResource("13_emmsu")
+
+[node name="StopMouse" type="Control" parent="CustomWindow/BlankCard"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -124.0
+offset_right = -88.0
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CustomWindow/BlankCard/StopMouse"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -45.0
+offset_right = 73.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Click Play to start the game!"
+autowrap_mode = 3
+
+[connection signal="make24_started" from="." to="." method="_on_make_24_started"]
+[connection signal="window_closed" from="CustomWindow" to="." method="_on_custom_window_window_closed"]
+[connection signal="pressed" from="CustomWindow/Control/Operators/Plus" to="." method="_on_plus_pressed"]
+[connection signal="pressed" from="CustomWindow/Control/Operators/Minus" to="." method="_on_minus_pressed"]
+[connection signal="pressed" from="CustomWindow/Control/Operators/Multiply" to="." method="_on_multiply_pressed"]
+[connection signal="pressed" from="CustomWindow/Control/Operators/Divide" to="." method="_on_divide_pressed"]
+[connection signal="pressed" from="CustomWindow/Control/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CustomWindow/Control/RedrawButton" to="." method="_on_redraw_button_pressed"]
+[connection signal="pressed" from="CustomWindow/Control/UndoButton" to="." method="_on_undo_button_pressed"]
+[connection signal="toggled" from="CustomWindow/Control/LimitedTimeCheckBox" to="." method="_on_limited_time_check_box_toggled"]
