@@ -227,19 +227,21 @@ func _on_custom_window_window_closed() -> void:
 
 
 func _on_play_button_pressed() -> void:
+	# Prepare deck
 	make24_started.emit()
 	current_mode = Modes.NORMAL
 	score_lbl.text = "Score: "+str(Database.player["make24_score"])
 	clear_cards()
 	all_cards = prepare_deck()
 	draw_cards(all_cards)
+	enable_cards()
 	
 	# Change to redraw button
 	$CustomWindow/BlankCard.hide()
 	$CustomWindow/Control/PlayButton.hide()
 	$CustomWindow/Control/RedrawButton.show()
 	$CustomWindow/Control/LimitedTimeCheckBox.disabled = false
-
+	$CustomWindow/Operation.show()
 
 func _on_redraw_button_pressed() -> void:
 	redraw()
@@ -285,4 +287,26 @@ func _on_limited_time_check_box_toggled(toggled_on: bool) -> void:
 	
 	# Renew limited time score
 	Database.player["limited_time_score"] = 0
+	score_lbl.text = "Score: 0"
 	redraw()
+
+
+func _on_timer_timeout():
+	Database.save_data()
+	
+	# Print text
+	if Database.player["limited_time_score"] == Database.player["limited_time_best"]:
+		score_lbl.text = "Time's up!\nYour current score is: %s \nThis is your best score!" %Database.player["limited_time_score"]
+	else:
+		score_lbl.text = "Time's up!\nYour current score is: %s \nYour best score is: %s" %[Database.player["limited_time_score"], Database.player["limited_time_best"]]
+	
+	# disable all cards
+	for i in cards:
+			i.is_interactive = false
+	
+	# Reset buttons
+	$CustomWindow/Operation.hide()
+	$CustomWindow/Control/PlayButton.show()
+	$CustomWindow/Control/RedrawButton.hide()
+	$CustomWindow/Control/LimitedTimeCheckBox.disabled = true
+	$CustomWindow/Watch.stop()

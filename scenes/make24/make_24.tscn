@@ -397,6 +397,7 @@ text = "Click Play to start the game!"
 autowrap_mode = 3
 
 [connection signal="make24_started" from="." to="." method="_on_make_24_started"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="window_closed" from="CustomWindow" to="." method="_on_custom_window_window_closed"]
 [connection signal="pressed" from="CustomWindow/Control/Operators/Plus" to="." method="_on_plus_pressed"]
 [connection signal="pressed" from="CustomWindow/Control/Operators/Minus" to="." method="_on_minus_pressed"]
