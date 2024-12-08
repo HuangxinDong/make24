@@ -2,10 +2,17 @@ extends Control
 
 
 @export var make24: PackedScene
-var make24_instance: Node2D = null
+@onready var window_container: Control = $WindowContainer
+
+var make24_instance: Node2D
+
+func _process(delta: float) -> void:
+	pass
 
 func _on_math_24_button_pressed() -> void:
-	if not make24:
-		return
-	var make24_instance = make24.instantiate()
-	add_child(make24_instance)
+	# avoid opening duplicate windows
+	for child in window_container.get_children():
+		if child.name == "make24":
+			return
+	make24_instance = make24.instantiate()
+	window_container.add_child(make24_instance)
