@@ -1,13 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://budul3proapnb"]
+[gd_scene load_steps=5 format=3 uid="uid://budul3proapnb"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_stgle"]
+[ext_resource type="AudioStream" uid="uid://cthavieub5ygg" path="res://assets/sounds/pause.wav" id="2_xqu87"]
 [ext_resource type="PackedScene" uid="uid://gvykwb1hw483" path="res://scenes/pause_menu.tscn" id="3_tjpo1"]
 [ext_resource type="PackedScene" uid="uid://ddmr858h4dawm" path="res://scenes/desktop.tscn" id="4_xtaa7"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_stgle")
 
+[node name="PauseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xqu87")
+
 [node name="Desktop" parent="." instance=ExtResource("4_xtaa7")]
 
-[node name="PauseMenu" parent="." instance=ExtResource("3_tjpo1")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 10
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_tjpo1")]
 visible = false

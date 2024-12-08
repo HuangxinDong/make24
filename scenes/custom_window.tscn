@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://pv8fl8xtsev3"]
 
 [ext_resource type="Script" path="res://scripts/custom_window.gd" id="1_5e6b5"]
-[ext_resource type="Texture2D" uid="uid://ledm4d42k4gw" path="res://assets/UI/Window.png" id="2_itb6m"]
-[ext_resource type="Texture2D" uid="uid://v1yndgqdjvqn" path="res://assets/UI/closebutton1.png" id="4_3fydx"]
-[ext_resource type="Texture2D" uid="uid://didp57oeuptv7" path="res://assets/UI/closebutton2.png" id="5_1373w"]
+[ext_resource type="Texture2D" uid="uid://ledm4d42k4gw" path="res://assets/sprites/UI/Window.png" id="2_itb6m"]
+[ext_resource type="Texture2D" uid="uid://v1yndgqdjvqn" path="res://assets/sprites/UI/closebutton1.png" id="4_3fydx"]
+[ext_resource type="Texture2D" uid="uid://didp57oeuptv7" path="res://assets/sprites/UI/closebutton2.png" id="5_1373w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8bxta"]
 size = Vector2(80.3125, 35)
@@ -14,13 +14,6 @@ size = Vector2(1200, 35)
 [node name="CustomWindow" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_5e6b5")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 offset_right = 1200.0
