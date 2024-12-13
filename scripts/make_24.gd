@@ -90,7 +90,6 @@ func select_card(card: Card):
 	# Select first card
 	if selected_cards.is_empty():
 		selected_cards.append(card)
-		print(card.number)
 		for i in cards:
 			i.is_interactive = false
 		card.is_interactive = true
@@ -101,7 +100,6 @@ func select_card(card: Card):
 		result = calculate(selected_cards[0].number, selected_cards[1].number)
 		merge_cards(selected_cards[0], selected_cards[1], result)
 		check_24(result)
-		print(check_24(result))
 		return
 	else:
 		print("Cannot be selected")
