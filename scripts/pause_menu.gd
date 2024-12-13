@@ -8,8 +8,7 @@ func get_main_node():
 	for child in get_tree().root.get_children():
 		if child.name == "Main":
 			return child
-		else:
-			print("Cannot find main")
+			
 	
 # Press Resume Button
 func _on_resume_button_pressed() -> void:
