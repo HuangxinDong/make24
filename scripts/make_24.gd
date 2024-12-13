@@ -303,15 +303,23 @@ func _on_card_deselected(deselected_card: Card) -> void:
 
 
 func _on_limited_time_check_box_toggled(toggled_on: bool) -> void:
-	current_mode = Modes.LIMITEDTIME
-	$CustomWindow/Watch.play("hands_move")
-	$CustomWindow/Countdown.show()
-	timer.start()
-	
-	# Renew limited time score
-	Database.player["limited_time_score"] = 0
-	score_lbl.text = "Score: 0"
-	redraw()
+	if toggled_on:
+		current_mode = Modes.LIMITEDTIME
+		$CustomWindow/Watch.play("hands_move")
+		$CustomWindow/Countdown.show()
+		timer.start()
+		
+		# Renew limited time score
+		Database.player["limited_time_score"] = 0
+		score_lbl.text = "Score: 0"
+		redraw()
+	else:
+		current_mode = Modes.NORMAL
+		$CustomWindow/Watch.stop()
+		$CustomWindow/Countdown.hide()
+		timer.stop()
+		score_lbl.text = "Score: 0"
+		redraw()
 
 
 func _on_timer_timeout():
