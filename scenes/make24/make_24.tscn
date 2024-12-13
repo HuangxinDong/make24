@@ -347,22 +347,19 @@ is_interactive = false
 [node name="CardContainer" type="Node2D" parent="CustomWindow"]
 
 [node name="Card1" parent="CustomWindow/CardContainer" instance=ExtResource("5_12fvi")]
-position = Vector2(623, 255)
+position = Vector2(295, 178)
 suit = 1
-number = 13
 
 [node name="Card2" parent="CustomWindow/CardContainer" instance=ExtResource("5_12fvi")]
-position = Vector2(867, 255)
+position = Vector2(295, 178)
 
 [node name="Card3" parent="CustomWindow/CardContainer" instance=ExtResource("5_12fvi")]
-position = Vector2(624, 575)
+position = Vector2(295, 178)
 suit = 2
-number = 6
 
 [node name="Card4" parent="CustomWindow/CardContainer" instance=ExtResource("5_12fvi")]
-position = Vector2(870, 575)
+position = Vector2(295, 178)
 suit = 3
-number = 4
 
 [node name="BlankCard" type="Sprite2D" parent="CustomWindow"]
 position = Vector2(295, 178)

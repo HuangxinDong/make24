@@ -13,7 +13,7 @@ var undo_stack: Array = []
 var all_cards: Array = []
 var selected_operator: Operators
 var operation_text: String = ""
-var result = 0
+var result: Array = []
 var current_mode = Modes.NORMAL
 
 @onready var custom_window: CharacterBody2D = $CustomWindow
@@ -27,6 +27,8 @@ var current_mode = Modes.NORMAL
 func _ready():
 	$CustomWindow/Control/UndoButton.disabled = true
 	$CustomWindow/UpcomingCard.is_interactive = false
+	$AnimationPlayer.seek(0, true)
+
 
 func _process(delta: float) -> void:
 	if timer:
@@ -47,7 +49,7 @@ func prepare_deck():
 	# Create a list that includes all cards
 	for suit in Card.Suits.values():
 		for number in range(1, 14):  # from A to K
-			all_cards.append({ "suit": suit, "number": number })
+			all_cards.append({ "suit": suit, "number": [number,1] })
 	
 	# Shuffle and then draw cards
 	all_cards.shuffle()
@@ -88,7 +90,7 @@ func select_card(card: Card):
 	# Select first card
 	if selected_cards.is_empty():
 		selected_cards.append(card)
-		print("First card selected: %s-%d" % [card.suit_name, card.number])
+		print(card.number)
 		for i in cards:
 			i.is_interactive = false
 		card.is_interactive = true
@@ -96,43 +98,45 @@ func select_card(card: Card):
 	# Select second card and perform operation
 	elif selected_cards.size() == 1 and selected_operator != null:
 		selected_cards.append(card)
-		print("Second card selected: %s-%d" % [card.suit_name, card.number])
 		result = calculate(selected_cards[0].number, selected_cards[1].number)
 		merge_cards(selected_cards[0], selected_cards[1], result)
 		check_24(result)
+		print(check_24(result))
 		return
 	else:
 		print("Cannot be selected")
 
 
-func calculate(a, b):
-	var operator ="" # to be print in $Operation Label
+func calculate(a: Array, b: Array):
+	var operator: String = "" # to be print in $Operation Label
 	match selected_operator:
 		Operators.PLUS:
-			operator ="+"
-			result = a + b
+			operator =" + "
+			result = simplify_fraction([(a[0]*b[1])+(b[0]*a[1]), a[1]*b[1]])
 		Operators.MINUS:
-			operator ="-"
-			result = a - b
+			operator =" - "
+			result = simplify_fraction([(a[0]*b[1])-(b[0]*a[1]), a[1]*b[1]])
 		Operators.MULTIPLY:
-			operator ="×"
-			result = a * b
+			operator =" × "
+			result = simplify_fraction([a[0]*b[0], a[1]*b[1]])
 		Operators.DIVIDE:
-			operator ="÷"
-			if b != 0:
-				result = float(a) / float(b)
+			operator =" ÷ "
+			if b[0] != 0:
+				result = simplify_fraction([a[0]*b[1], a[1]*b[0]])
 			else:
 				print("Cannot divide by zero")
-				return 0
+				return null
 		_:
 			print("No operator selected")
-			return 0
-	operation_text = "%s %s %s = %s \n" % [str(a), operator, str(b), str(result)]
+			return null
+	
+	# Update text in operation label
+	operation_text = format_fraction(a)+operator+format_fraction(b)+" = "+format_fraction(result)+"\n"
 	return result
 
 
 func merge_cards(card1:Card, card2:Card, result):
-	# Savr current state to undo_stack
+	# Save current state to undo_stack
 	var card1_index = card_container.get_children().find(card1)
 	var card2_index = card_container.get_children().find(card2)
 	var state_snapshot = {
@@ -173,7 +177,7 @@ func check_24(result):
 	for card in cards:
 		if card.is_visible() and card not in visible_cards:
 			visible_cards.append(card)
-	if result == 24 and visible_cards.size() == 1:
+	if result[0] == 24 and result[1] == 1 and visible_cards.size() == 1:
 		# Switch score between modes
 		var score: String = ""
 		match current_mode:
@@ -194,6 +198,27 @@ func check_24(result):
 func enable_cards():
 	for i in cards:
 		i.is_interactive = true
+
+
+func gcd(a: int, b: int) -> int:
+	while b != 0:
+		var temp = b
+		b = a % b
+		a = temp
+	return a
+
+
+func simplify_fraction(fraction: Array) -> Array:
+	var numerator = fraction[0]
+	var denominator = fraction[1]
+	var gcd_value = gcd(numerator, denominator)
+	return [numerator / gcd_value, denominator / gcd_value]
+
+func format_fraction(fraction: Array) -> String:
+	if fraction[1] != 1:
+		return "%s/%s" % [str(fraction[0]), str(fraction[1])]
+	else:
+		return str(fraction[0])
 
 func countdown():
 	var time_left = timer.time_left
@@ -310,3 +335,4 @@ func _on_timer_timeout():
 	$CustomWindow/Control/RedrawButton.hide()
 	$CustomWindow/Control/LimitedTimeCheckBox.disabled = true
 	$CustomWindow/Watch.stop()
+	$CustomWindow/Control/UndoButton.disabled = true

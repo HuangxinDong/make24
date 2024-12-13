@@ -167,7 +167,6 @@ size = Vector2(172, 245)
 texture_filter = 1
 position = Vector2(800, 600)
 script = ExtResource("1_80bnh")
-number = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
