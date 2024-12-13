@@ -78,8 +78,10 @@ func draw_cards(all_cards):
 			card_node.make_card(card_data["suit"], card_data["number"])
 			cards.append(card_node)
 	for card in cards:
-		card.card_selected.connect(_on_card_selected)
-		card.card_deselected.connect(_on_card_deselected)
+		if not card.card_selected.is_connected(_on_card_selected):
+			card.card_selected.connect(_on_card_selected)
+		if not card.card_deselected.is_connected(_on_card_deselected):
+			card.card_deselected.connect(_on_card_deselected)
 	update_upcoming_card()
 	$DealCardSFX.play()
 	$AnimationPlayer.play("deal_cards")
@@ -212,11 +214,13 @@ func simplify_fraction(fraction: Array) -> Array:
 	var gcd_value = gcd(numerator, denominator)
 	return [numerator / gcd_value, denominator / gcd_value]
 
+
 func format_fraction(fraction: Array) -> String:
 	if fraction[1] != 1:
 		return "%s/%s" % [str(fraction[0]), str(fraction[1])]
 	else:
 		return str(fraction[0])
+
 
 func countdown():
 	var time_left = timer.time_left
@@ -265,6 +269,7 @@ func _on_play_button_pressed() -> void:
 	$CustomWindow/Control/RedrawButton.show()
 	$CustomWindow/Control/LimitedTimeCheckBox.disabled = false
 	$CustomWindow/Operation.show()
+
 
 func _on_redraw_button_pressed() -> void:
 	redraw()
@@ -333,7 +338,7 @@ func _on_timer_timeout():
 	
 	# disable all cards
 	for i in cards:
-			i.is_interactive = false
+		i.is_interactive = false
 	
 	# Reset buttons
 	$CustomWindow/Operation.hide()
