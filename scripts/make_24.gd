@@ -154,9 +154,9 @@ func merge_cards(card1:Card, card2:Card, result):
 
 	# "Merge" two selected cards
 	card2.deselect()
-	card2.hide()
 	card1.deselect()
-	card1.make_card(card1.suit, result)
+	card1.hide()
+	card2.make_card(card2.suit, result)
 	selected_cards.clear()
 	$CustomWindow/Operation.text += operation_text
 	$CustomWindow/Control/UndoButton.disabled = false
@@ -168,7 +168,7 @@ func undo_merge():
 	card1.make_card(previous_state["card1"]["suit"], previous_state["card1"]["number"])
 	var card2 = card_container.get_child(previous_state["card2"]["index"])
 	card2.make_card(previous_state["card2"]["suit"], previous_state["card2"]["number"])
-	card2.show()
+	card1.show()
 	$CustomWindow/Operation.text = previous_state["Operation"]
 
 
