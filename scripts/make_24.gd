@@ -177,6 +177,7 @@ func check_24(result):
 	for card in cards:
 		if card.is_visible() and card not in visible_cards:
 			visible_cards.append(card)
+	
 	if result[0] == 24 and result[1] == 1 and visible_cards.size() == 1:
 		# Switch score between modes
 		var score: String = ""
@@ -191,7 +192,11 @@ func check_24(result):
 		score_lbl.text = "Score: "+str(Database.player[score])
 		if Database.player["limited_time_score"] > Database.player["limited_time_best"]:
 			Database.player["limited_time_best"] = Database.player["limited_time_score"]
-		for card in cards:
+		
+		$CustomWindow/Control/UndoButton.disabled = true
+		
+		# flip card
+		for card in visible_cards:
 			card.flip()
 
 
