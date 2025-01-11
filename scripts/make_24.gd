@@ -92,8 +92,7 @@ func select_card(card: Card):
 	# Select first card
 	if selected_cards.is_empty():
 		selected_cards.append(card)
-		for i in cards:
-			i.is_interactive = false
+		change_interactive(false)
 		card.is_interactive = true
 		return
 	# Select second card and perform operation
@@ -130,7 +129,7 @@ func calculate(a: Array, b: Array):
 			print("No operator selected")
 			return null
 	
-	# Update text in operation label
+	# Update operation label
 	operation_text = format_fraction(a)+operator+format_fraction(b)+" = "+format_fraction(result)+"\n"
 	return result
 
@@ -192,17 +191,13 @@ func check_24(result):
 		score_lbl.text = "Score: "+str(Database.player[score])
 		if Database.player["limited_time_score"] > Database.player["limited_time_best"]:
 			Database.player["limited_time_best"] = Database.player["limited_time_score"]
+		Database.save_data()
 		
 		$CustomWindow/Control/UndoButton.disabled = true
 		
 		# flip card
 		for card in visible_cards:
 			card.flip()
-
-
-func enable_cards():
-	for i in cards:
-		i.is_interactive = true
 
 
 func gcd(a: int, b: int) -> int:
@@ -246,6 +241,12 @@ func redraw():
 	draw_cards(all_cards)
 
 
+func change_interactive(status: bool) -> void:
+	# enable or disable all cards
+	for i in cards:
+		i.is_interactive = status
+
+
 func _on_make_24_started() -> void:
 	# add instructions?
 	pass
@@ -266,18 +267,21 @@ func _on_play_button_pressed() -> void:
 	clear_cards()
 	all_cards = prepare_deck()
 	draw_cards(all_cards)
-	enable_cards()
+	change_interactive(true)
 	
-	# Change to redraw button
+	# Prepare buttons and labels
 	$CustomWindow/BlankCard.hide()
 	$CustomWindow/Control/PlayButton.hide()
 	$CustomWindow/Control/RedrawButton.show()
 	$CustomWindow/Control/LimitedTimeCheckBox.disabled = false
 	$CustomWindow/Operation.show()
+	$CustomWindow/Countdown.hide()
 
 
 func _on_redraw_button_pressed() -> void:
 	redraw()
+	change_interactive(true)
+	score_lbl.text = "Score: "+str(Database.player["make24_score"])
 
 
 func _on_undo_button_pressed() -> void:
@@ -288,19 +292,19 @@ func _on_undo_button_pressed() -> void:
 
 func _on_plus_pressed() -> void:
 	selected_operator = Operators.PLUS
-	enable_cards()
+	change_interactive(true)
 
 func _on_minus_pressed() -> void:
 	selected_operator = Operators.MINUS
-	enable_cards()
+	change_interactive(true)
 
 func _on_multiply_pressed() -> void:
 	selected_operator = Operators.MULTIPLY
-	enable_cards()
+	change_interactive(true)
 
 func _on_divide_pressed() -> void:
 	selected_operator = Operators.DIVIDE
-	enable_cards()
+	change_interactive(true)
 
 
 func _on_card_selected(card: Card) -> void:
@@ -309,15 +313,19 @@ func _on_card_selected(card: Card) -> void:
 
 func _on_card_deselected(deselected_card: Card) -> void:
 	selected_cards.pop_back()
-	enable_cards()
+	change_interactive(true)
 
 
 func _on_limited_time_check_box_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		current_mode = Modes.LIMITEDTIME
+		change_interactive(true)
+		timer.start()
+		
+		# Reset labels and stuff
 		$CustomWindow/Watch.play("hands_move")
 		$CustomWindow/Countdown.show()
-		timer.start()
+		$CustomWindow/Operation.show()
 		
 		# Renew limited time score
 		Database.player["limited_time_score"] = 0
@@ -342,13 +350,10 @@ func _on_timer_timeout():
 		score_lbl.text = "Time's up!\nYour current score is: %s \nYour best score is: %s" %[Database.player["limited_time_score"], Database.player["limited_time_best"]]
 	
 	# disable all cards
-	for i in cards:
-		i.is_interactive = false
+	change_interactive(false)
 	
 	# Reset buttons
 	$CustomWindow/Operation.hide()
-	$CustomWindow/Control/PlayButton.show()
-	$CustomWindow/Control/RedrawButton.hide()
-	$CustomWindow/Control/LimitedTimeCheckBox.disabled = true
+	$CustomWindow/Control/LimitedTimeCheckBox.set_pressed_no_signal(false)
 	$CustomWindow/Watch.stop()
 	$CustomWindow/Control/UndoButton.disabled = true
