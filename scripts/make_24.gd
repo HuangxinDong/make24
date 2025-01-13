@@ -266,7 +266,7 @@ func _on_play_button_pressed() -> void:
 	score_lbl.text = "Score: "+str(Database.player["make24_score"])
 	clear_cards()
 	all_cards = prepare_deck()
-	draw_cards(all_cards)
+	redraw()
 	change_interactive(true)
 	
 	# Prepare buttons and labels
@@ -281,7 +281,6 @@ func _on_play_button_pressed() -> void:
 func _on_redraw_button_pressed() -> void:
 	redraw()
 	change_interactive(true)
-	score_lbl.text = "Score: "+str(Database.player["make24_score"])
 
 
 func _on_undo_button_pressed() -> void:
@@ -349,7 +348,13 @@ func _on_timer_timeout():
 	else:
 		score_lbl.text = "Time's up!\nYour current score is: %s \nYour best score is: %s" %[Database.player["limited_time_score"], Database.player["limited_time_best"]]
 	
-	# disable all cards
+	# Deselect all cards
+	for card in cards:
+		card.show()
+		if card.is_selected:
+			card.deselect()
+		
+	# Disable all cards
 	change_interactive(false)
 	
 	# Reset buttons
@@ -357,3 +362,5 @@ func _on_timer_timeout():
 	$CustomWindow/Control/LimitedTimeCheckBox.set_pressed_no_signal(false)
 	$CustomWindow/Watch.stop()
 	$CustomWindow/Control/UndoButton.disabled = true
+	$CustomWindow/Control/RedrawButton.hide()
+	$CustomWindow/Control/PlayButton.show()
