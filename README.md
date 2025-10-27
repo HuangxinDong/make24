@@ -1,5 +1,4 @@
 # Make 24
-#### Video Demo:  <https://youtu.be/TSU0XUjhFhQ>
 #### Description:
 
 Make 24 is a digital version of the classic “Make 24” poker card game made by Godot 4.3, where players use addition, subtraction, multiplication, and division to manipulate four cards and calculate the result to equal 24. I spent lot of time playing this game during my childhood, but I had never played it as a video game. That’s why I decided to try creating one myself.  The project includes draggable and closable windows, simulating a Macintosh System 7-style desktop environment where players interact with different components of the game. It features two gameplay modes: Normal Mode and Limited Time Mode. In Normal Mode, players can take their time to perform calculations, while Limited Time Mode challenges players to make as many 24s as possible within two minutes. The game also records and compares high scores for the timed mode.
