@@ -1,4 +1,7 @@
 # Make 24
+
+[![CC BY-NC 4.0][cc-by-nc-shield]][cc-by-nc]
+
 ## Description:
 
 Make 24 is a digital version of the classic “Make 24” poker card game made by Godot 4.5, where players use addition, subtraction, multiplication, and division to manipulate four cards and calculate the result to equal 24. I spent lot of time playing this game during my childhood, but I had never played it as a video game. That’s why I decided to try creating one myself.  The project includes draggable and closable windows, simulating a Macintosh System 7-style desktop environment where players interact with different components of the game. It features two gameplay modes: Normal Mode and Limited Time Mode. In Normal Mode, players can take their time to perform calculations, while Limited Time Mode challenges players to make as many 24s as possible within two minutes. The game also records and compares high scores for the timed mode.
@@ -73,3 +76,14 @@ The other scripts:
 Instead of rounding decimal results in calculations, I implemented a fraction system to ensure mathematical accuracy and provide a unique challenge. This design required adding custom functions for fraction operations and creating a visual representation of fractions.
 
 Each fraction is stored as a two-element array, where the first element represents the numerator and the second represents the denominator. I also made several custom functions for fraction operations, such as `gcd`, `simplify_fraction` and `format_fraction`. The `gcd` function simplify the resulting fractions by calculating their greatest common divisor (GCD) and can be used to divide both the numerator and denominator by this value. For example, addition combines fractions using the formula `[(a[0]*b[1]) + (b[0]*a[1]), a[1]*b[1]]`, ensuring the result maintains its mathematical integrity. The `format_fraction` will format these fractions as strings, displaying them in a clean and readable format, such as “3/4” or “2” (when the denominator is 1). This system not only avoids rounding errors inherent in floating-point operations but also presents players with a more engaging and precise mathematical challenge.
+
+---
+
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial 4.0 International License][cc-by-nc].
+
+[![CC BY-NC 4.0][cc-by-nc-image]][cc-by-nc]
+
+[cc-by-nc]: https://creativecommons.org/licenses/by-nc/4.0/
+[cc-by-nc-image]: https://licensebuttons.net/l/by-nc/4.0/88x31.png
+[cc-by-nc-shield]: https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg
