@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://dbkpdkeeo00uc"]
 
-[ext_resource type="Script" path="res://scripts/make_24.gd" id="1_qapsf"]
+[ext_resource type="Script" uid="uid://b57nptnlna88n" path="res://scripts/make_24.gd" id="1_qapsf"]
 [ext_resource type="AudioStream" uid="uid://8jde8ymkgivm" path="res://assets/sounds/deal4cards.wav" id="3_s03ji"]
 [ext_resource type="Texture2D" uid="uid://quaruuwsjyer" path="res://assets/sprites/cards/card_deck.png" id="3_ytf47"]
 [ext_resource type="Texture2D" uid="uid://d06nokpweiyn7" path="res://assets/sprites/UI/plus.png" id="4_613us"]
@@ -115,9 +115,9 @@ resource_name = "pop"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5imfd"]
 _data = {
-"RESET": SubResource("Animation_f8xye"),
-"deal_cards": SubResource("Animation_v34w7"),
-"pop": SubResource("Animation_r1o8p")
+&"RESET": SubResource("Animation_f8xye"),
+&"deal_cards": SubResource("Animation_v34w7"),
+&"pop": SubResource("Animation_r1o8p")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ilmme"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ddmr858h4dawm"]
 
 [ext_resource type="Texture2D" uid="uid://bkmvlxrirpc1x" path="res://assets/screen/Background.png" id="1_fa5oy"]
-[ext_resource type="Script" path="res://scripts/desktop.gd" id="1_lcxy5"]
+[ext_resource type="Script" uid="uid://n03w7iom2nr4" path="res://scripts/desktop.gd" id="1_lcxy5"]
 [ext_resource type="PackedScene" uid="uid://dbkpdkeeo00uc" path="res://scenes/make24/make_24.tscn" id="2_72oqr"]
 [ext_resource type="Texture2D" uid="uid://wctitagthdld" path="res://assets/sprites/UI/Make24 Icon.png" id="2_syu86"]
 [ext_resource type="Texture2D" uid="uid://4ntanyddktot" path="res://assets/sprites/UI/Make24 Icon focus.png" id="3_cm6tx"]
