@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dbkpdkeeo00uc"]
+[gd_scene format=3 uid="uid://dbkpdkeeo00uc"]
 
 [ext_resource type="Script" uid="uid://b57nptnlna88n" path="res://scripts/make_24.gd" id="1_qapsf"]
 [ext_resource type="AudioStream" uid="uid://8jde8ymkgivm" path="res://assets/sounds/deal4cards.wav" id="3_s03ji"]
@@ -179,41 +179,39 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ggnai")
 }],
-"loop": true,
+"loop": 1,
 "name": &"hands_move",
 "speed": 1.0
 }]
 
-[node name="make24" type="Node2D"]
+[node name="make24" type="Node2D" unique_id=2118387207]
 script = ExtResource("1_qapsf")
 card_scene = ExtResource("5_12fvi")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=23859350]
 wait_time = 120.0
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_5imfd")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2143672724]
+libraries/ = SubResource("AnimationLibrary_5imfd")
 
-[node name="DealCardSFX" type="AudioStreamPlayer" parent="."]
+[node name="DealCardSFX" type="AudioStreamPlayer" parent="." unique_id=474892898]
 stream = ExtResource("3_s03ji")
 volume_db = -10.0
 
-[node name="CustomWindow" parent="." instance=ExtResource("5_kioku")]
+[node name="CustomWindow" parent="." unique_id=444140707 instance=ExtResource("5_kioku")]
 position = Vector2(200, 200)
 window_name = "Make 24"
 
-[node name="Control" type="Control" parent="CustomWindow"]
+[node name="Control" type="Control" parent="CustomWindow" unique_id=1214509338]
 layout_mode = 3
 anchors_preset = 0
 offset_top = 43.0
 offset_right = 1200.0
-offset_bottom = 800.0
+offset_bottom = 831.0
 mouse_filter = 2
 
-[node name="Operators" type="VBoxContainer" parent="CustomWindow/Control"]
+[node name="Operators" type="VBoxContainer" parent="CustomWindow/Control" unique_id=2042228389]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -228,27 +226,27 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 36
 
-[node name="Plus" type="TextureButton" parent="CustomWindow/Control/Operators"]
+[node name="Plus" type="TextureButton" parent="CustomWindow/Control/Operators" unique_id=1913562623]
 layout_mode = 2
 texture_normal = ExtResource("4_613us")
 texture_pressed = ExtResource("5_gxrb1")
 
-[node name="Minus" type="TextureButton" parent="CustomWindow/Control/Operators"]
+[node name="Minus" type="TextureButton" parent="CustomWindow/Control/Operators" unique_id=942277459]
 layout_mode = 2
 texture_normal = ExtResource("6_pkf5v")
 texture_pressed = ExtResource("7_f5efb")
 
-[node name="Multiply" type="TextureButton" parent="CustomWindow/Control/Operators"]
+[node name="Multiply" type="TextureButton" parent="CustomWindow/Control/Operators" unique_id=1794164399]
 layout_mode = 2
 texture_normal = ExtResource("8_bhsif")
 texture_pressed = ExtResource("9_ll8un")
 
-[node name="Divide" type="TextureButton" parent="CustomWindow/Control/Operators"]
+[node name="Divide" type="TextureButton" parent="CustomWindow/Control/Operators" unique_id=1093226497]
 layout_mode = 2
 texture_normal = ExtResource("10_oup84")
 texture_pressed = ExtResource("11_6mrks")
 
-[node name="PlayButton" type="Button" parent="CustomWindow/Control"]
+[node name="PlayButton" type="Button" parent="CustomWindow/Control" unique_id=1925821758]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 2
@@ -261,7 +259,7 @@ offset_bottom = -66.0
 grow_vertical = 0
 text = "Play"
 
-[node name="RedrawButton" type="Button" parent="CustomWindow/Control"]
+[node name="RedrawButton" type="Button" parent="CustomWindow/Control" unique_id=186859099]
 visible = false
 texture_filter = 1
 layout_mode = 1
@@ -275,7 +273,7 @@ offset_bottom = -66.0
 grow_vertical = 0
 text = "Redraw"
 
-[node name="UndoButton" type="Button" parent="CustomWindow/Control"]
+[node name="UndoButton" type="Button" parent="CustomWindow/Control" unique_id=1971183219]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 2
@@ -289,7 +287,21 @@ grow_vertical = 0
 disabled = true
 text = "Undo"
 
-[node name="LimitedTimeLabel" type="Label" parent="CustomWindow/Control"]
+[node name="HintButton" type="Button" parent="CustomWindow/Control" unique_id=268263470]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 460.0
+offset_top = -108.0
+offset_right = 597.0
+offset_bottom = -66.0
+grow_vertical = 0
+disabled = true
+text = "Hint"
+
+[node name="LimitedTimeLabel" type="Label" parent="CustomWindow/Control" unique_id=1390155264]
 layout_mode = 1
 offset_left = 864.0
 offset_top = 15.0
@@ -297,7 +309,7 @@ offset_right = 1118.0
 offset_bottom = 43.0
 text = "Limited Time Mode:"
 
-[node name="LimitedTimeCheckBox" type="CheckBox" parent="CustomWindow/Control"]
+[node name="LimitedTimeCheckBox" type="CheckBox" parent="CustomWindow/Control" unique_id=430203596]
 layout_mode = 0
 offset_left = 1015.0
 offset_top = 67.0
@@ -306,27 +318,27 @@ offset_bottom = 105.0
 disabled = true
 flat = true
 
-[node name="Watch" type="AnimatedSprite2D" parent="CustomWindow"]
+[node name="Watch" type="AnimatedSprite2D" parent="CustomWindow" unique_id=719717085]
 position = Vector2(1105, 146)
 sprite_frames = SubResource("SpriteFrames_ujusj")
 animation = &"hands_move"
 frame_progress = 0.328277
 
-[node name="Countdown" type="Label" parent="CustomWindow"]
+[node name="Countdown" type="Label" parent="CustomWindow" unique_id=1999909022]
 visible = false
 offset_left = 69.0
 offset_top = 399.0
 offset_right = 217.0
 offset_bottom = 427.0
 
-[node name="Score" type="Label" parent="CustomWindow"]
+[node name="Score" type="Label" parent="CustomWindow" unique_id=814393074]
 offset_left = 70.0
 offset_top = 442.0
 offset_right = 172.0
 offset_bottom = 470.0
 text = "Score: 0"
 
-[node name="Operation" type="Label" parent="CustomWindow"]
+[node name="Operation" type="Label" parent="CustomWindow" unique_id=836825125]
 offset_left = 70.0
 offset_top = 484.0
 offset_right = 358.0
@@ -335,37 +347,44 @@ text = "Operation:
 "
 autowrap_mode = 3
 
-[node name="CardDeck" type="Sprite2D" parent="CustomWindow"]
+[node name="Hint" type="Label" parent="CustomWindow" unique_id=600799678]
+offset_left = 70.0
+offset_top = 618.0
+offset_right = 620.0
+offset_bottom = 675.0
+autowrap_mode = 3
+
+[node name="CardDeck" type="Sprite2D" parent="CustomWindow" unique_id=210856085]
 visibility_layer = 3
 position = Vector2(207, 194)
 texture = ExtResource("3_ytf47")
 
-[node name="UpcomingCard" parent="CustomWindow" instance=ExtResource("5_12fvi")]
+[node name="UpcomingCard" parent="CustomWindow" unique_id=962656172 instance=ExtResource("5_12fvi")]
 position = Vector2(295, 178)
 is_interactive = false
 
-[node name="CardContainer" type="Node2D" parent="CustomWindow"]
+[node name="CardContainer" type="Node2D" parent="CustomWindow" unique_id=442227163]
 
-[node name="Card1" parent="CustomWindow/CardContainer" instance=ExtResource("5_12fvi")]
+[node name="Card1" parent="CustomWindow/CardContainer" unique_id=995145200 instance=ExtResource("5_12fvi")]
 position = Vector2(295, 178)
 suit = 1
 
-[node name="Card2" parent="CustomWindow/CardContainer" instance=ExtResource("5_12fvi")]
+[node name="Card2" parent="CustomWindow/CardContainer" unique_id=1186703206 instance=ExtResource("5_12fvi")]
 position = Vector2(295, 178)
 
-[node name="Card3" parent="CustomWindow/CardContainer" instance=ExtResource("5_12fvi")]
+[node name="Card3" parent="CustomWindow/CardContainer" unique_id=724168301 instance=ExtResource("5_12fvi")]
 position = Vector2(295, 178)
 suit = 2
 
-[node name="Card4" parent="CustomWindow/CardContainer" instance=ExtResource("5_12fvi")]
+[node name="Card4" parent="CustomWindow/CardContainer" unique_id=1410410876 instance=ExtResource("5_12fvi")]
 position = Vector2(295, 178)
 suit = 3
 
-[node name="BlankCard" type="Sprite2D" parent="CustomWindow"]
+[node name="BlankCard" type="Sprite2D" parent="CustomWindow" unique_id=1420195637]
 position = Vector2(295, 178)
 texture = ExtResource("13_emmsu")
 
-[node name="StopMouse" type="Control" parent="CustomWindow/BlankCard"]
+[node name="StopMouse" type="Control" parent="CustomWindow/BlankCard" unique_id=1123066307]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -377,7 +396,7 @@ offset_bottom = -124.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CustomWindow/BlankCard/StopMouse"]
+[node name="Label" type="Label" parent="CustomWindow/BlankCard/StopMouse" unique_id=2131222195]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -403,4 +422,5 @@ autowrap_mode = 3
 [connection signal="pressed" from="CustomWindow/Control/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CustomWindow/Control/RedrawButton" to="." method="_on_redraw_button_pressed"]
 [connection signal="pressed" from="CustomWindow/Control/UndoButton" to="." method="_on_undo_button_pressed"]
+[connection signal="pressed" from="CustomWindow/Control/HintButton" to="." method="_on_hint_button_pressed"]
 [connection signal="toggled" from="CustomWindow/Control/LimitedTimeCheckBox" to="." method="_on_limited_time_check_box_toggled"]

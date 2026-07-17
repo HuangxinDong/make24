@@ -15,6 +15,7 @@ var selected_operator: Operators
 var operation_text: String = ""
 var result: Array = []
 var current_mode = Modes.NORMAL
+var current_hint: String = ""
 
 @onready var custom_window: CharacterBody2D = $CustomWindow
 @onready var card_container = $CustomWindow/CardContainer
@@ -26,6 +27,7 @@ var current_mode = Modes.NORMAL
 
 func _ready():
 	$CustomWindow/Control/UndoButton.disabled = true
+	$CustomWindow/Control/HintButton.disabled = true
 	$CustomWindow/UpcomingCard.is_interactive = false
 	$AnimationPlayer.seek(0, true)
 
@@ -231,6 +233,7 @@ func countdown():
 
 func redraw():
 	$CustomWindow/Operation.text = "Operation:\n"
+	$CustomWindow/Hint.text = ""
 	$CustomWindow/Control/UndoButton.disabled = true
 	selected_cards.clear()
 	undo_stack.clear()
@@ -245,6 +248,95 @@ func change_interactive(status: bool) -> void:
 	# enable or disable all cards
 	for i in cards:
 		i.is_interactive = status
+
+
+func get_visible_card_values() -> Array:
+	var values = []
+	for card in cards:
+		if card.is_visible():
+			values.append({
+				"value": normalize_fraction(card.number),
+				"expression": format_fraction(card.number)
+			})
+	return values
+
+
+func find_solution(items: Array) -> String:
+	if items.size() == 1:
+		if items[0]["value"][0] == 24 and items[0]["value"][1] == 1:
+			return items[0]["expression"]
+		return ""
+
+	for i in range(items.size()):
+		for j in range(items.size()):
+			if i == j:
+				continue
+
+			var remaining = []
+			for k in range(items.size()):
+				if k != i and k != j:
+					remaining.append(items[k])
+
+			for operation in build_solution_steps(items[i], items[j]):
+				var next_items = remaining.duplicate()
+				next_items.append(operation)
+				var solution = find_solution(next_items)
+				if solution != "":
+					return solution
+	return ""
+
+
+func build_solution_steps(left: Dictionary, right: Dictionary) -> Array:
+	var steps = []
+	var a = left["value"]
+	var b = right["value"]
+	var left_expression = left["expression"]
+	var right_expression = right["expression"]
+
+	steps.append({
+		"value": add_fraction(a, b),
+		"expression": "(%s + %s)" % [left_expression, right_expression]
+	})
+	steps.append({
+		"value": subtract_fraction(a, b),
+		"expression": "(%s - %s)" % [left_expression, right_expression]
+	})
+	steps.append({
+		"value": multiply_fraction(a, b),
+		"expression": "(%s × %s)" % [left_expression, right_expression]
+	})
+	if b[0] != 0:
+		steps.append({
+			"value": divide_fraction(a, b),
+			"expression": "(%s ÷ %s)" % [left_expression, right_expression]
+		})
+	return steps
+
+
+func normalize_fraction(fraction: Array) -> Array:
+	var numerator = fraction[0]
+	var denominator = fraction[1]
+	if denominator < 0:
+		numerator = -numerator
+		denominator = -denominator
+	var gcd_value = abs(gcd(abs(numerator), abs(denominator)))
+	return [numerator / gcd_value, denominator / gcd_value]
+
+
+func add_fraction(a: Array, b: Array) -> Array:
+	return normalize_fraction([(a[0] * b[1]) + (b[0] * a[1]), a[1] * b[1]])
+
+
+func subtract_fraction(a: Array, b: Array) -> Array:
+	return normalize_fraction([(a[0] * b[1]) - (b[0] * a[1]), a[1] * b[1]])
+
+
+func multiply_fraction(a: Array, b: Array) -> Array:
+	return normalize_fraction([a[0] * b[0], a[1] * b[1]])
+
+
+func divide_fraction(a: Array, b: Array) -> Array:
+	return normalize_fraction([a[0] * b[1], a[1] * b[0]])
 
 
 func _on_make_24_started() -> void:
@@ -273,8 +365,10 @@ func _on_play_button_pressed() -> void:
 	$CustomWindow/BlankCard.hide()
 	$CustomWindow/Control/PlayButton.hide()
 	$CustomWindow/Control/RedrawButton.show()
+	$CustomWindow/Control/HintButton.disabled = false
 	$CustomWindow/Control/LimitedTimeCheckBox.disabled = false
 	$CustomWindow/Operation.show()
+	$CustomWindow/Hint.show()
 	$CustomWindow/Countdown.hide()
 
 
@@ -287,6 +381,14 @@ func _on_undo_button_pressed() -> void:
 	undo_merge()
 	if undo_stack.is_empty():
 		$CustomWindow/Control/UndoButton.disabled = true
+
+
+func _on_hint_button_pressed() -> void:
+	current_hint = find_solution(get_visible_card_values())
+	if current_hint == "":
+		$CustomWindow/Hint.text = "Hint: No answer"
+	else:
+		$CustomWindow/Hint.text = "Hint: %s = 24" % current_hint
 
 
 func _on_plus_pressed() -> void:
@@ -359,8 +461,10 @@ func _on_timer_timeout():
 	
 	# Reset buttons
 	$CustomWindow/Operation.hide()
+	$CustomWindow/Hint.hide()
 	$CustomWindow/Control/LimitedTimeCheckBox.set_pressed_no_signal(false)
 	$CustomWindow/Watch.stop()
 	$CustomWindow/Control/UndoButton.disabled = true
+	$CustomWindow/Control/HintButton.disabled = true
 	$CustomWindow/Control/RedrawButton.hide()
 	$CustomWindow/Control/PlayButton.show()

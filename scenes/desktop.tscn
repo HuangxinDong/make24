@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddmr858h4dawm"]
+[gd_scene format=3 uid="uid://ddmr858h4dawm"]
 
 [ext_resource type="Texture2D" uid="uid://bkmvlxrirpc1x" path="res://assets/screen/Background.png" id="1_fa5oy"]
 [ext_resource type="Script" uid="uid://n03w7iom2nr4" path="res://scripts/desktop.gd" id="1_lcxy5"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://wctitagthdld" path="res://assets/sprites/UI/Make24 Icon.png" id="2_syu86"]
 [ext_resource type="Texture2D" uid="uid://4ntanyddktot" path="res://assets/sprites/UI/Make24 Icon focus.png" id="3_cm6tx"]
 
-[node name="Desktop" type="Control"]
+[node name="Desktop" type="Control" unique_id=1214505901]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +17,7 @@ mouse_filter = 2
 script = ExtResource("1_lcxy5")
 make24 = ExtResource("2_72oqr")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=2001512296]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_fa5oy")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1574863353]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.655
@@ -40,13 +40,13 @@ offset_bottom = 107.2
 grow_horizontal = 0
 mouse_filter = 0
 
-[node name="Math24Button" type="TextureButton" parent="VBoxContainer"]
+[node name="Math24Button" type="TextureButton" parent="VBoxContainer" unique_id=1926332401]
 layout_mode = 2
 texture_normal = ExtResource("2_syu86")
 texture_pressed = ExtResource("3_cm6tx")
 texture_focused = ExtResource("3_cm6tx")
 
-[node name="WindowContainer" type="Control" parent="."]
+[node name="WindowContainer" type="Control" parent="." unique_id=672218194]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
